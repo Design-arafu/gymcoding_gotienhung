@@ -6,17 +6,22 @@ import UserModel from '@/lib/models/UserModel';
 
 export const POST = async (request: NextRequest) => {
   const { name, email, password } = await request.json();
+
   await dbConnect();
-  const hashedPassword = await bcrypt.hash(password, 5);
-  const newUser = new UserModel({
-    name,
-    email,
-    password: hashedPassword,
-  });
+  
+  const hashedPassword = await bcrypt.hash(password, 10);
+
   try {
-    await newUser.save();
+    const newUser = await UserModel.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
+
     return Response.json(
-      { message: 'User has been created' },
+      { message: 'User has been created',
+        newUser
+      },
       {
         status: 201,
       },
