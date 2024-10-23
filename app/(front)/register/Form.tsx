@@ -59,6 +59,7 @@ const Form = () => {
       if (res.ok) {
         return router.push(
           `/signin?callbackUrl=${callbackUrl}&success=Account has been created`,
+          // http://localhost:3000/signin?callbackUrl=/&success=Account%20has%20been%20created
         );
       } else {
         const data = await res.json();

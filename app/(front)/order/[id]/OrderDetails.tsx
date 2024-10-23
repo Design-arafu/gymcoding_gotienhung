@@ -89,7 +89,7 @@ const OrderDetails = ({ orderId, paypalClientId }: IOrderDetails) => {
               <p>{shippingAddress.fullName}</p>
               <p>
                 {shippingAddress.address}, {shippingAddress.city},{' '}
-                {shippingAddress.postalCode}, {shippingAddress.country}{' '}
+                {shippingAddress.phone}, {shippingAddress.country}{' '}
               </p>
               {isDelivered ? (
                 <div className='text-success'>Delivered at {deliveredAt}</div>

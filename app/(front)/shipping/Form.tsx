@@ -22,7 +22,7 @@ const Form = () => {
       fullName: '',
       address: '',
       city: '',
-      postalCode: '',
+      phone: '',
       country: '',
     },
   });
@@ -31,7 +31,7 @@ const Form = () => {
     setValue('fullName', shippingAddress.fullName);
     setValue('address', shippingAddress.address);
     setValue('city', shippingAddress.city);
-    setValue('postalCode', shippingAddress.postalCode);
+    setValue('phone', shippingAddress.phone);
     setValue('country', shippingAddress.country);
   }, [setValue, shippingAddress]);
 
@@ -80,7 +80,7 @@ const Form = () => {
             <FormInput name='Full Name' id='fullName' required />
             <FormInput name='Address' id='address' required />
             <FormInput name='City' id='city' required />
-            <FormInput name='Postal Code' id='postalCode' required />
+            <FormInput name='Phone' id='phone' required />
             <FormInput name='Country' id='country' required />
             <div className='my-2'>
               <button

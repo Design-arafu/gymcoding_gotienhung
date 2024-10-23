@@ -26,7 +26,7 @@ const initialState: Cart = {
     fullName: '',
     address: '',
     city: '',
-    postalCode: '',
+    phone: '',
     country: '',
   },
 };

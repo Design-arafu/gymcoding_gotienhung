@@ -83,7 +83,7 @@ const Form = () => {
               <p>{shippingAddress.fullName}</p>
               <p>
                 {shippingAddress.address}, {shippingAddress.city},{' '}
-                {shippingAddress.postalCode}, {shippingAddress.country}{' '}
+                {shippingAddress.phone}, {shippingAddress.country}{' '}
               </p>
               <div>
                 <Link className='btn' href='/shipping'>
