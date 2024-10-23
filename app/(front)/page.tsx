@@ -10,7 +10,6 @@ import ProductItems, {
 import ReadMore from '@/components/readMore/ReadMore';
 import Text from '@/components/readMore/Text';
 import Slider from '@/components/slider/Slider';
-import dbConnect from '@/lib/dbConnect';
 
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_APP_NAME || 'Fullstack Next.js Store',
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
     'Fullstack Next.js Store - Server Components, MongoDB, Next Auth, Tailwind, Zustand',
 };
 
-const HomePage = async () => {
+const HomePage = () => {
   return (
     <div className='my-8 flex flex-col gap-4 md:gap-16'>
       <div>
