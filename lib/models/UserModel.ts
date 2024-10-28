@@ -5,6 +5,7 @@ export type User = {
   name: string;
   email: string;
   isAdmin: boolean;
+  provider: string;
 };
 
 const UserSchema = new mongoose.Schema(
@@ -20,9 +21,16 @@ const UserSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
     },
-    isAdmin: { type: Boolean, required: true, default: false },
+    isAdmin: { 
+      type: Boolean,
+      required: true,
+      default: false 
+    },
+    provider: {
+      type: String,
+      default: "credentials"
+    }
   },
   { timestamps: true },
 );

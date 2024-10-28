@@ -1,12 +1,13 @@
 import bcrypt from 'bcryptjs';
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthConfig } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google'
 
 import dbConnect from './dbConnect';
 import UserModel from './models/UserModel';
+import { signInWithOauth } from './actions/auth.action';
 
-export const config = {
+export const config: NextAuthConfig = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -47,6 +48,12 @@ export const config = {
     error: '/error',
   },
   callbacks: {
+    async signIn({ account, profile }) {
+      if ( account?.provider === 'google' && profile ) {
+        return await signInWithOauth({ account, profile })
+      }
+      return true
+    },
     async jwt({ user, trigger, session, token }: any) {
       if (user) {
         token.user = {
