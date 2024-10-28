@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { signIn, useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import GoogleSignButton from '@/components/button/GoogleSignInButton';
 
 type Inputs = {
   email: string;
@@ -107,6 +108,14 @@ const Form = () => {
             </button>
           </div>
         </form>
+        <div className="flex items-center justify-center my-4">
+          <div className="border-b border-gray-400 w-full"></div>
+          <span className="px-2 text-gray-400">or</span>
+          <div className="border-b border-gray-400 w-full"></div>
+        </div>
+        <GoogleSignButton isSubmitting={isSubmitting}>
+          Sign in with Google
+        </GoogleSignButton>
         <div>
           Need an account?{' '}
           <Link className='link' href={`/register?callbackUrl=${callbackUrl}`}>
