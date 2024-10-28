@@ -10,6 +10,8 @@ import useSWRMutation from 'swr/mutation';
 import CheckoutSteps from '@/components/checkout/CheckoutSteps';
 import useCartService from '@/lib/hooks/useCartStore';
 
+import image from '../../../public/images/bidv_qr_Tin.png'
+
 const Form = () => {
   const router = useRouter();
   const {
@@ -179,6 +181,34 @@ const Form = () => {
                   <div className=' flex justify-between'>
                     <div>Total</div>
                     <div>${totalPrice}</div>
+                  </div>
+                </li>
+                <hr></hr>
+                <li>
+                  <div className=' flex justify-between'>
+                    <div>Ngân hàng BIDV</div>
+                  </div>
+                </li>
+                <li>
+                  <div className=' flex justify-between'>
+                    <div>Chủ TK: Dương Đăng Hưng</div>
+                  </div>
+                </li>
+                <li>
+                  <div className=' flex justify-between'>
+                    <div>Số TK : 6150076552</div>
+                  </div>
+                </li>
+                <li>
+                  <div className=' flex justify-between'>
+                    <div>
+                      <Image 
+                        src={image}
+                        alt='image_qr'
+                        width={200}
+                        height={200}
+                      ></Image>
+                    </div>
                   </div>
                 </li>
 
