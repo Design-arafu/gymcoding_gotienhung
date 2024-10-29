@@ -5,7 +5,7 @@ import GoogleProvider from 'next-auth/providers/google'
 
 import dbConnect from './dbConnect';
 import UserModel from './models/UserModel';
-import { signInWithOauth } from './actions/auth.action';
+import { signInWithOauth, getUserByEmail } from './actions/auth.action';
 
 export const config: NextAuthConfig = {
   providers: [
@@ -54,13 +54,19 @@ export const config: NextAuthConfig = {
       }
       return true
     },
-    async jwt({ user, trigger, session, token }: any) {
-      if (user) {
+    async jwt({ trigger, session, token }: any) {
+      if (token.email) {
+
+        const user = await getUserByEmail({ email: token.email })
+
+        console.log(`jwt user > ${user}`)
+
         token.user = {
           _id: user._id,
           email: user.email,
           name: user.name,
           isAdmin: user.isAdmin,
+          provider: user.provider
         };
       }
       if (trigger === 'update' && session) {
@@ -68,13 +74,24 @@ export const config: NextAuthConfig = {
           ...token.user,
           email: session.user.email,
           name: session.user.name,
+          isAdmin: session.user.isAdmin,
+          provider: session.user.provider
         };
       }
       return token;
     },
     session: async ({ session, token }: any) => {
       if (token) {
-        session.user = token.user;
+        session = {
+          ...session,
+          user: {
+            ...session.user,
+            _id: token.user._id,
+            email: token.user.email,
+            isAdmin: token.user.isAdmin,
+            provider: token.user.provider
+          },
+        }
       }
       return session;
     },
