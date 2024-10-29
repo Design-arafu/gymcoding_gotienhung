@@ -10,7 +10,8 @@ import useSWRMutation from 'swr/mutation';
 import CheckoutSteps from '@/components/checkout/CheckoutSteps';
 import useCartService from '@/lib/hooks/useCartStore';
 
-import image from '../../../public/images/bidv_qr_Tin.png'
+import image_qr_bank from '../../../public/images/bidv_qr_Tin.png'
+import image_qr_momo from '../../../public/images/qr_momo_Tin.png'
 
 const Form = () => {
   const router = useRouter();
@@ -183,35 +184,72 @@ const Form = () => {
                     <div>${totalPrice}</div>
                   </div>
                 </li>
-                <hr></hr>
-                <li>
-                  <div className=' flex justify-between'>
-                    <div>Ngân hàng BIDV</div>
-                  </div>
-                </li>
-                <li>
-                  <div className=' flex justify-between'>
-                    <div>Chủ TK: Dương Đăng Hưng</div>
-                  </div>
-                </li>
-                <li>
-                  <div className=' flex justify-between'>
-                    <div>Số TK : 6150076552</div>
-                  </div>
-                </li>
-                <li>
-                  <div className=' flex justify-between'>
-                    <div>
-                      <Image 
-                        src={image}
-                        alt='image_qr'
-                        width={200}
-                        height={200}
-                      ></Image>
+                <div className="flex items-center justify-center my-4">
+                  <div className="border-b border-gray-400 w-full"></div>
+                </div>
+                {
+                  paymentMethod === 'Bank' ? (
+                <>
+                  <li>
+                    <div className=' flex justify-between'>
+                      <div>Ngân hàng BIDV</div>
                     </div>
-                  </div>
-                </li>
-
+                  </li>
+                  <li>
+                    <div className=' flex justify-between'>
+                      <div>Chủ TK: Dương Đăng Hưng</div>
+                    </div>
+                  </li>
+                  <li>
+                    <div className=' flex justify-between'>
+                      <div>Số TK : 6150076552</div>
+                    </div>
+                  </li>
+                  <li>
+                    <div className=' flex justify-between'>
+                      <div>
+                        <Image 
+                          src={image_qr_bank}
+                          alt='image_qr'
+                          width={220}
+                          height={220}
+                        ></Image>
+                      </div>
+                    </div>
+                  </li>
+                </>
+                  ) : (
+                    <>
+                    <li>
+                      <div className=' flex justify-between'>
+                        <div>Momo</div>
+                      </div>
+                    </li>
+                    <li>
+                      <div className=' flex justify-between'>
+                        <div>Chủ TK: Dương Đăng Hưng</div>
+                      </div>
+                    </li>
+                    <li>
+                      <div className=' flex justify-between'>
+                        <div>Phone: 0907210127</div>
+                      </div>
+                    </li>
+                    <li>
+                      <div className=' flex justify-between'>
+                        <div>
+                          <Image 
+                            src={image_qr_momo}
+                            alt='image_qr_momo'
+                            width={330}
+                            height={330}
+                          ></Image>
+                        </div>
+                      </div>
+                    </li>
+                  </>
+                  )
+                }
                 <li>
                   <button
                     onClick={() => placeOrder()}

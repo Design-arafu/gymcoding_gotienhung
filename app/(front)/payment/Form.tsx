@@ -9,6 +9,7 @@ import useCartService from '@/lib/hooks/useCartStore';
 const Form = () => {
   const router = useRouter();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
+  const payments = ['Bank', 'Momo']
 
   const { savePaymentMethod, paymentMethod, shippingAddress } =
     useCartService();
@@ -31,12 +32,12 @@ const Form = () => {
       <CheckoutSteps current={2} />
       <div className='card mx-auto my-4 max-w-sm bg-base-300'>
         <div className='card-body'>
-          <h1 className='card-title'>Payment Method</h1>
+          <h1 className='card-title'>Phương thức thanh toán</h1>
           <form onSubmit={handleSubmit}>
-            {['PayPal', 'Stripe', 'CashOnDelivery'].map((payment) => (
+            {payments.map((payment) => (
               <div key={payment}>
                 <label className='label cursor-pointer'>
-                  <span className='label-text'>{payment}</span>
+                  <span className='label-text'>{payment === 'Bank' ? 'Chuyển khoản Ngân Hàng': 'Momo'}</span>
                   <input
                     type='radio'
                     name='paymentMethod'
