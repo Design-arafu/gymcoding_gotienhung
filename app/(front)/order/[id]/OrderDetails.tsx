@@ -34,6 +34,22 @@ const OrderDetails = ({ orderId, paypalClientId }: IOrderDetails) => {
     },
   );
 
+  const { trigger: paidOrder, isMutating : isPaiding } = useSWRMutation(
+    `/api/orders/${orderId}`,
+    async (url) => {
+      const res = await fetch(`/api/admin/orders/${orderId}/paid`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      const data = await res.json()
+      res.ok
+       ? toast.success('Đã thanh toán thành công')
+       : toast.error(data.message)
+    }
+  )
+
   function createPayPalOrder() {
     return fetch(`/api/orders/${orderId}/create-paypal-order`, {
       method: 'POST',
@@ -194,18 +210,32 @@ const OrderDetails = ({ orderId, paypalClientId }: IOrderDetails) => {
                   </li>
                 )}
                 {session?.user.isAdmin && (
-                  <li>
-                    <button
-                      className='btn my-2 w-full'
-                      onClick={() => deliverOrder()}
-                      disabled={isDelivering}
-                    >
-                      {isDelivering && (
-                        <span className='loading loading-spinner'></span>
-                      )}
-                      Mark as delivered
-                    </button>
-                  </li>
+                  <>
+                    <li>
+                      <button
+                        className='btn my-2 w-full'
+                        onClick={() => paidOrder()}
+                        disabled={isPaiding}
+                      >
+                        {isPaiding && (
+                          <span className='loading loading-spinner'></span>
+                        )}
+                        Đã thanh toán
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className='btn my-2 w-full'
+                        onClick={() => deliverOrder()}
+                        disabled={isDelivering}
+                      >
+                        {isDelivering && (
+                          <span className='loading loading-spinner'></span>
+                        )}
+                        Đã giao hàng
+                      </button>
+                    </li>
+                  </>
                 )}
               </ul>
             </div>
