@@ -21,7 +21,7 @@ const initialState: Cart = {
   taxPrice: 0,
   shippingPrice: 0,
   totalPrice: 0,
-  paymentMethod: 'PayPal',
+  paymentMethod: 'Bank',
   shippingAddress: {
     fullName: '',
     address: '',
@@ -121,8 +121,8 @@ export const calcPrice = (items: OrderItem[]) => {
   const itemsPrice = round2(
       items.reduce((acc, item) => acc + item.price * item.qty, 0),
     ),
-    shippingPrice = round2(itemsPrice > 100 ? 0 : 100),
-    taxPrice = round2(Number(0.15 * itemsPrice)),
+    shippingPrice = 0, //round2(itemsPrice > 100 ? 0 : 100),
+    taxPrice = 0, // round2(Number(0.15 * itemsPrice)),
     totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
   return { itemsPrice, shippingPrice, taxPrice, totalPrice };
 };

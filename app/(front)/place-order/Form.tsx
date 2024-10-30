@@ -168,18 +168,6 @@ const Form = () => {
                 </li>
                 <li>
                   <div className=' flex justify-between'>
-                    <div>Tax</div>
-                    <div>${taxPrice}</div>
-                  </div>
-                </li>
-                <li>
-                  <div className=' flex justify-between'>
-                    <div>Shipping</div>
-                    <div>${shippingPrice}</div>
-                  </div>
-                </li>
-                <li>
-                  <div className=' flex justify-between'>
                     <div>Total</div>
                     <div>${totalPrice}</div>
                   </div>

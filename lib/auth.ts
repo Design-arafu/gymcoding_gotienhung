@@ -59,8 +59,6 @@ export const config: NextAuthConfig = {
 
         const user = await getUserByEmail({ email: token.email })
 
-        console.log(`jwt user > ${user}`)
-
         token.user = {
           _id: user._id,
           email: user.email,

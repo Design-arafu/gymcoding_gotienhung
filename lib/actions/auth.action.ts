@@ -37,7 +37,7 @@ interface GetUserByEmail {
 export const getUserByEmail = async ({
     email
 }: GetUserByEmail) => {
-    
+
     await dbConnect()
 
     const user = await User.findOne({ email }).select("-password")
@@ -46,7 +46,5 @@ export const getUserByEmail = async ({
         throw new Error("User does not exist")
     }
 
-    console.log(`user by email ${user}`)
-    
     return {...user._doc, _id: user._id.toString()}
 }

@@ -50,31 +50,6 @@ const OrderDetails = ({ orderId, paypalClientId }: IOrderDetails) => {
     }
   )
 
-  function createPayPalOrder() {
-    return fetch(`/api/orders/${orderId}/create-paypal-order`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((order) => order.id);
-  }
-
-  function onApprovePayPalOrder(data: any) {
-    return fetch(`/api/orders/${orderId}/capture-paypal-order`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((orderData) => {
-        toast.success('Order paid successfully');
-      });
-  }
-
   const { data, error } = useSWR(`/api/orders/${orderId}`);
 
   if (error) return error.message;
@@ -121,9 +96,25 @@ const OrderDetails = ({ orderId, paypalClientId }: IOrderDetails) => {
               <p>{paymentMethod}</p>
               {isPaid ? (
                 <div className='text-success'>Paid at {paidAt}</div>
-              ) : (
+              ) : session?.user?.isAdmin ? (
                 <div className='text-error'>Not Paid</div>
-              )}
+              ) : (
+                <>
+                 <div className="flex items-center justify-center my-4">
+                    <div className="border-b border-gray-400 w-full"></div>
+                 </div>
+                <div>
+                    <div className='mb-2 flex justify-start'>
+                      <div>Người nhận: Dương Đăng Hưng</div>
+                    </div>
+                    <div className='mb-2 flex'>
+                      <div>Số điện thoại/ Zalo: 0907.210.127</div>
+                    </div>
+                </div>
+
+                <div className='border-2 border-indigo-200 rounded'>Cám ơn bạn đã đặt hàng. Chúng tôi sẽ kiểm tra đơn hàng và sớm liên hệ lại với bạn.</div>
+                </>
+                )}
             </div>
           </div>
 
@@ -180,35 +171,11 @@ const OrderDetails = ({ orderId, paypalClientId }: IOrderDetails) => {
                 </li>
                 <li>
                   <div className='mb-2 flex justify-between'>
-                    <div>Tax</div>
-                    <div>${taxPrice}</div>
-                  </div>
-                </li>
-                <li>
-                  <div className='mb-2 flex justify-between'>
-                    <div>Shipping</div>
-                    <div>${shippingPrice}</div>
-                  </div>
-                </li>
-                <li>
-                  <div className='mb-2 flex justify-between'>
                     <div>Total</div>
                     <div>${totalPrice}</div>
                   </div>
                 </li>
 
-                {!isPaid && paymentMethod === 'PayPal' && (
-                  <li>
-                    <PayPalScriptProvider
-                      options={{ clientId: paypalClientId }}
-                    >
-                      <PayPalButtons
-                        createOrder={createPayPalOrder}
-                        onApprove={onApprovePayPalOrder}
-                      />
-                    </PayPalScriptProvider>
-                  </li>
-                )}
                 {session?.user.isAdmin && (
                   <>
                     <li>

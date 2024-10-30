@@ -10,9 +10,9 @@ const calcPrices = (orderItems: OrderItem[]) => {
     orderItems.reduce((acc, item) => acc + item.price * item.qty, 0),
   );
   // Calculate the shipping price
-  const shippingPrice = round2(itemsPrice > 100 ? 0 : 10);
+  const shippingPrice = 0 // round2(itemsPrice > 100 ? 0 : 10);
   // Calculate the tax price
-  const taxPrice = round2(Number((0.15 * itemsPrice).toFixed(2)));
+  const taxPrice = 0 // round2(Number((0.15 * itemsPrice).toFixed(2)));
   // Calculate the total price
   const totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
   return { itemsPrice, shippingPrice, taxPrice, totalPrice };
