@@ -82,7 +82,7 @@ const Form = () => {
         <div className='overflow-x-auto md:col-span-3'>
           <div className='card bg-base-300'>
             <div className='card-body'>
-              <h2 className='card-title'>Shipping Address</h2>
+              <h2 className='card-title'>Địa chỉ giao hàng</h2>
               <p>{shippingAddress.fullName}</p>
               <p>
                 {shippingAddress.address}, {shippingAddress.city},{' '}
@@ -90,7 +90,7 @@ const Form = () => {
               </p>
               <div>
                 <Link className='btn' href='/shipping'>
-                  Edit
+                  Sửa
                 </Link>
               </div>
             </div>
@@ -98,11 +98,11 @@ const Form = () => {
 
           <div className='card mt-4 bg-base-300'>
             <div className='card-body'>
-              <h2 className='card-title'>Payment Method</h2>
+              <h2 className='card-title'>Phương thức thanh toán</h2>
               <p>{paymentMethod}</p>
               <div>
                 <Link className='btn' href='/payment'>
-                  Edit
+                  Sửa
                 </Link>
               </div>
             </div>
@@ -110,13 +110,13 @@ const Form = () => {
 
           <div className='card mt-4 bg-base-300'>
             <div className='card-body'>
-              <h2 className='card-title'>Items</h2>
+              <h2 className='card-title'>Danh sách sản phẩm</h2>
               <table className='table'>
                 <thead>
                   <tr>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -148,7 +148,7 @@ const Form = () => {
               </table>
               <div>
                 <Link className='btn' href='/cart'>
-                  Edit
+                  Sửa
                 </Link>
               </div>
             </div>
@@ -158,17 +158,17 @@ const Form = () => {
         <div>
           <div className='card bg-base-300'>
             <div className='card-body'>
-              <h2 className='card-title'>Order Summary</h2>
+              <h2 className='card-title'>Tổng đơn hàng</h2>
               <ul className='space-y-3'>
                 <li>
                   <div className=' flex justify-between'>
-                    <div>Items</div>
+                    <div>Sản phẩm</div>
                     <div>${itemsPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className=' flex justify-between'>
-                    <div>Total</div>
+                    <div>Tổng cộng</div>
                     <div>${totalPrice}</div>
                   </div>
                 </li>
@@ -247,7 +247,7 @@ const Form = () => {
                     {isPlacing && (
                       <span className='loading loading-spinner'></span>
                     )}
-                    Place Order
+                    Đặt hàng
                   </button>
                 </li>
               </ul>

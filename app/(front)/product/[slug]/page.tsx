@@ -41,7 +41,7 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
   return (
     <div className='my-2'>
       <div className='my-4'>
-        <Link href='/' className='btn'>{`<- Back to Products`}</Link>
+        <Link href='/' className='btn'>{`<- Quay về trang Chủ`}</Link>
       </div>
       <div className='grid gap-4 md:grid-cols-4'>
         <div className='relative aspect-square md:col-span-2'>
@@ -72,7 +72,7 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
               <div className='divider'></div>
             </li>
             <li>
-              <p>Description: {product.description}</p>
+              <p>Mô tả: {product.description}</p>
             </li>
           </ul>
         </div>
@@ -80,13 +80,13 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
           <div className='card mt-3 bg-base-300 shadow-xl md:mt-0'>
             <div className='card-body'>
               <div className='flex justify-between'>
-                <div>Price</div>
-                <div>${product.price}</div>
+                <div>Giá</div>
+                <div>{product.price} VND</div>
               </div>
               <div className='mb-2 flex justify-between'>
-                <div>Status</div>
+                <div>Trạng thái</div>
                 <div>
-                  {product.countInStock > 0 ? 'In Stock' : 'Unavailable'}
+                  {product.countInStock > 0 ? 'Còn hàng' : 'Hết hàng'}
                 </div>
               </div>
               {product.countInStock !== 0 && (

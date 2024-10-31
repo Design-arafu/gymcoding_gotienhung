@@ -75,13 +75,13 @@ const Form = () => {
       <CheckoutSteps current={1} />
       <div className='card mx-auto my-4 max-w-sm bg-base-300'>
         <div className='card-body'>
-          <h1 className='card-title'>Shipping Address</h1>
+          <h1 className='card-title'>Địa chỉ giao hàng</h1>
           <form onSubmit={handleSubmit(formSubmit)}>
-            <FormInput name='Full Name' id='fullName' required />
-            <FormInput name='Address' id='address' required />
-            <FormInput name='City' id='city' required />
-            <FormInput name='Phone' id='phone' required />
-            <FormInput name='Country' id='country' required />
+            <FormInput name='Họ tên' id='fullName' required />
+            <FormInput name='Địa chỉ' id='address' required />
+            <FormInput name='Thành phố/ Tỉnh' id='city' required />
+            <FormInput name='Số điện thoại' id='phone' required />
+            <FormInput name='Quốc gia' id='country' required />
             <div className='my-2'>
               <button
                 type='submit'
@@ -89,7 +89,7 @@ const Form = () => {
                 className='btn btn-primary w-full'
               >
                 {isSubmitting && <span className='loading loading-spinner' />}
-                Next
+                Kế tiếp
               </button>
             </div>
           </form>

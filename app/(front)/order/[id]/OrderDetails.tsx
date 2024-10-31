@@ -71,33 +71,33 @@ const OrderDetails = ({ orderId, paypalClientId }: IOrderDetails) => {
 
   return (
     <div>
-      <h1 className='py-4 text-2xl'>Order {orderId}</h1>
+      <h1 className='py-4 text-2xl'>Đơn hàng: {orderId}</h1>
       <div className='my-4 grid md:grid-cols-4 md:gap-5'>
         <div className='md:col-span-3'>
           <div className='card bg-base-300'>
             <div className='card-body'>
-              <h2 className='card-title'>Shipping Address</h2>
+              <h2 className='card-title'>Địa chỉ giao hàng</h2>
               <p>{shippingAddress.fullName}</p>
               <p>
                 {shippingAddress.address}, {shippingAddress.city},{' '}
                 {shippingAddress.phone}, {shippingAddress.country}{' '}
               </p>
               {isDelivered ? (
-                <div className='text-success'>Delivered at {deliveredAt}</div>
+                <div className='text-success'>Giao lúc {deliveredAt}</div>
               ) : (
-                <div className='text-error'>Not Delivered</div>
+                <div className='text-error'>Chưa giao hàng</div>
               )}
             </div>
           </div>
 
           <div className='card mt-4 bg-base-300'>
             <div className='card-body'>
-              <h2 className='card-title'>Payment Method</h2>
+              <h2 className='card-title'>Phương thức thanh toán</h2>
               <p>{paymentMethod}</p>
               {isPaid ? (
-                <div className='text-success'>Paid at {paidAt}</div>
+                <div className='text-success'>Thanh toán lúc {paidAt}</div>
               ) : session?.user?.isAdmin ? (
-                <div className='text-error'>Not Paid</div>
+                <div className='text-error'>Chưa thanh toán</div>
               ) : (
                 <>
                  <div className="flex items-center justify-center my-4">
@@ -120,13 +120,13 @@ const OrderDetails = ({ orderId, paypalClientId }: IOrderDetails) => {
 
           <div className='card mt-4 bg-base-300'>
             <div className='card-body'>
-              <h2 className='card-title'>Items</h2>
+              <h2 className='card-title'>Danh sách sản phẩm</h2>
               <table className='table'>
                 <thead>
                   <tr>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn Giá</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -161,18 +161,18 @@ const OrderDetails = ({ orderId, paypalClientId }: IOrderDetails) => {
         <div>
           <div className='card bg-base-300'>
             <div className='card-body'>
-              <h2 className='card-title'>Order Summary</h2>
+              <h2 className='card-title'>Tổng đơn hàng</h2>
               <ul>
                 <li>
                   <div className='mb-2 flex justify-between'>
-                    <div>Items</div>
-                    <div>${itemsPrice}</div>
+                    <div>Sản phẩm</div>
+                    <div>{itemsPrice} VND</div>
                   </div>
                 </li>
                 <li>
                   <div className='mb-2 flex justify-between'>
-                    <div>Total</div>
-                    <div>${totalPrice}</div>
+                    <div>Tổng cộng</div>
+                    <div>{totalPrice} VND</div>
                   </div>
                 </li>
 

@@ -20,12 +20,12 @@ const CartDetails = () => {
 
   return (
     <div>
-      <h1 className='py-4 text-2xl'>Shopping Cart</h1>
+      <h1 className='py-4 text-2xl'>Giỏ hàng</h1>
       {items.length === 0 ? (
         <div>
-          <p className='mb-2'>Cart is empty :(</p>
+          <p className='mb-2'>Giỏ hàng trống :(</p>
           <Link href='/' className='btn'>
-            Go shopping
+            Mua sắm
           </Link>
         </div>
       ) : (
@@ -34,9 +34,9 @@ const CartDetails = () => {
             <table className='table'>
               <thead>
                 <tr>
-                  <th>Item</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
+                  <th>Sản phẩm</th>
+                  <th>Số lượng</th>
+                  <th>Giá</th>
                 </tr>
               </thead>
               <tbody>
@@ -85,8 +85,8 @@ const CartDetails = () => {
             <div className='card-body'>
               <ul>
                 <li className='pb-3 text-xl'>
-                  Subtotal: {items.reduce((acc, item) => acc + item.qty, 0)}:
-                  <br />$ {itemsPrice}
+                  Số lượng: {items.reduce((acc, item) => acc + item.qty, 0)}
+                  <br />{itemsPrice} VND
                 </li>
                 <li>
                   <button
@@ -94,7 +94,7 @@ const CartDetails = () => {
                     className='btn btn-primary w-full'
                     onClick={() => router.push('/shipping')}
                   >
-                    Proceed to Checkout
+                    Tiến hành đặt hàng
                   </button>
                 </li>
               </ul>

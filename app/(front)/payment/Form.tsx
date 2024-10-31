@@ -51,7 +51,7 @@ const Form = () => {
             ))}
             <div className='my-2'>
               <button type='submit' className='btn btn-primary w-full'>
-                Next
+                Kế tiếp
               </button>
             </div>
             <div className='my-2'>
@@ -60,7 +60,7 @@ const Form = () => {
                 className='btn my-2 w-full'
                 onClick={() => router.back()}
               >
-                Back
+                Quay lại
               </button>
             </div>
           </form>

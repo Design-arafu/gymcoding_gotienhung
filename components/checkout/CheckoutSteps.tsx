@@ -1,7 +1,7 @@
 const CheckoutSteps = ({ current = 0 }) => {
   return (
     <ul className='steps steps-vertical mt-4 w-full lg:steps-horizontal'>
-      {['User Login', 'Shipping Address', 'Payment Method', 'Place Order'].map(
+      {['Đăng nhập', 'Địa chỉ giao hàng', 'Phương thức thanh toán', 'Đặt hàng'].map(
         (step, index) => (
           <li
             key={step}
